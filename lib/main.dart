@@ -5,11 +5,10 @@ String number = "";
 double? result;
 
 double? calc() {
-  final p = ShuntingYardParser();
-  final exp = p.parse(number);
-  final cm = ContextModel();
+  ShuntingYardParser p = ShuntingYardParser();
+  Expression exp = p.parse(number);
 
-  double eval = exp.evaluate(EvaluationType.REAL, cm);
+  double eval = exp.evaluate(EvaluationType.REAL, ContextModel());
   return eval;
 }
 
