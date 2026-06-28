@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 String number = "";
-int? n;
 double? result;
-int? currentOpr;
-int? lastOpr;
+
 double? calc() {
   final p = ShuntingYardParser();
   final exp = p.parse(number);
@@ -14,44 +12,7 @@ double? calc() {
   double eval = exp.evaluate(EvaluationType.REAL, cm);
   return eval;
 }
-// void numShift(int opr) {
 
-//   if(currentOpr == null){
-//     currentOpr = opr;
-//     print("opr : $currentOpr");
-//   }
-//   //currentOpr = opr;
-//   print("opr : $currentOpr");
-//   if(result == null){
-//     result = n;
-//     n = null;
-//     print("result : $result");
-//     print("n : $n");
-//   }
-//   if(n != null){
-//     print("result : $result");
-//   print("opr : $currentOpr");
-//   print("n : $n");
-//     if(currentOpr == 1){
-//     result = result! + n!;
-//   } else if(currentOpr == 2){
-//     result = result! - n!;
-//   } else if(currentOpr == 3){
-//     result = result! * n!;
-//   } else if(currentOpr == 4){
-//     result = result! ~/ n!;
-//   }
-//   print("result : $result");
-//   print("opr : $currentOpr");
-//   print("n : $n");
-
-//   lastOpr = currentOpr;
-//   currentOpr = null;
-//   }
-//   if(opr == 0){
-//     currentOpr = null;
-//   }
-// }
 
 void main() {
   runApp(MainApp());
@@ -126,8 +87,6 @@ class homepage extends State<MainApp> {
                     setState(() {
                       number = "";
                       result = null;
-                      n = null;
-                      currentOpr = null;
                     });
                   },
                 ),
@@ -147,7 +106,6 @@ class homepage extends State<MainApp> {
                     onTap: () {
                       setState(() {
                         number = number + "1";
-                        n = (n ?? 0) * 10 + 1;
                       });
                     },
                     child: SizedBox(
@@ -175,7 +133,6 @@ class homepage extends State<MainApp> {
                     onTap: () {
                       setState(() {
                         number = number + "2";
-                        n = (n ?? 0) * 10 + 2;
                       });
                     },
                     child: SizedBox(
@@ -203,7 +160,6 @@ class homepage extends State<MainApp> {
                     onTap: () {
                       setState(() {
                         number = number + "3";
-                        n = (n ?? 0) * 10 + 3;
                       });
                     },
                     child: SizedBox(
@@ -231,8 +187,6 @@ class homepage extends State<MainApp> {
                     onTap: () {
                       setState(() {
                         number = number + "+";
-                        //numShift(1);
-                        //n = null;
                       });
                     },
                     child: SizedBox(
@@ -265,7 +219,6 @@ class homepage extends State<MainApp> {
                     onTap: () {
                       setState(() {
                         number = number + "4";
-                        n = (n ?? 0) * 10 + 4;
                       });
                     },
                     child: SizedBox(
@@ -293,7 +246,6 @@ class homepage extends State<MainApp> {
                     onTap: () {
                       setState(() {
                         number = number + "5";
-                        n = (n ?? 0) * 10 + 5;
                       });
                     },
                     child: SizedBox(
@@ -321,7 +273,6 @@ class homepage extends State<MainApp> {
                     onTap: () {
                       setState(() {
                         number = number + "6";
-                        n = (n ?? 0) * 10 + 6;
                       });
                     },
                     child: SizedBox(
@@ -349,8 +300,6 @@ class homepage extends State<MainApp> {
                     onTap: () {
                       setState(() {
                         number = number + "-";
-                        //numShift(2);
-                        //n = null;
                       });
                     },
                     child: SizedBox(
@@ -383,7 +332,6 @@ class homepage extends State<MainApp> {
                     onTap: () {
                       setState(() {
                         number = number + "7";
-                        n = (n ?? 0) * 10 + 7;
                       });
                     },
                     child: SizedBox(
@@ -411,7 +359,6 @@ class homepage extends State<MainApp> {
                     onTap: () {
                       setState(() {
                         number = number + "8";
-                        n = (n ?? 0) * 10 + 8;
                       });
                     },
                     child: SizedBox(
@@ -439,7 +386,6 @@ class homepage extends State<MainApp> {
                     onTap: () {
                       setState(() {
                         number = number + "9";
-                        n = (n ?? 0) * 10 + 9;
                       });
                     },
                     child: SizedBox(
@@ -467,8 +413,6 @@ class homepage extends State<MainApp> {
                     onTap: () {
                       setState(() {
                         number = number + "*";
-                        //numShift(3);
-                        //n = null;
                       });
                     },
                     child: SizedBox(
@@ -501,7 +445,7 @@ class homepage extends State<MainApp> {
                     onTap: () {
                       setState(() {
                         number = number + "0";
-                        n = (n ?? 0) * 10 + 0;
+                        
                       });
                     },
                     child: SizedBox(
@@ -528,8 +472,6 @@ class homepage extends State<MainApp> {
                   child: InkWell(
                     onTap: () {
                       setState(() {
-                        //numShift(lastOpr!);
-                        //n = null;
                         result = calc();
                       });
                     },
@@ -559,8 +501,7 @@ class homepage extends State<MainApp> {
                     onTap: () {
                       setState(() {
                         number = number + "/";
-                        // numShift(4);
-                        // n = null;
+                        
                       });
                     },
                     child: SizedBox(
